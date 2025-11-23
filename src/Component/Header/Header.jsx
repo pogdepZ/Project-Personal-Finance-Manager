@@ -10,6 +10,7 @@ export default function Header() {
     setTimeout(()=>{
         navigate("/")
     }, 0)
+    console.log()
   };
   return (
     <>
