@@ -1,0 +1,94 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "account": "admin",
+      "password": "admin123",
+      "name": "Super Admin"
+    },
+    {
+      "id": "2",
+      "account": "longle",
+      "password": "longpass",
+      "name": "Le Minh Long"
+    },
+    {
+      "id": "3",
+      "account": "guest_user",
+      "password": "123",
+      "name": "Khách Vãng Lai"
+    },
+    {
+      "id": "4",
+      "account": "manager01",
+      "password": "secure789",
+      "name": "Trưởng Phòng"
+    },
+    {
+      "id": "5",
+      "account": "staff_kho",
+      "password": "kho1234",
+      "name": "Nhân Viên Kho"
+    },
+    {
+      "id": "6",
+      "account": "dev_test",
+      "password": "devmode",
+      "name": "Developer"
+    },
+    {
+      "id": "7",
+      "account": "customer_vip",
+      "password": "vip999",
+      "name": "Khách VIP"
+    },
+    {
+      "id": "8",
+      "account": "hacker_lord",
+      "password": "donttrythis",
+      "name": "Security Tester"
+    },
+    {
+      "id": "9",
+      "account": "sale_team",
+      "password": "salepass",
+      "name": "Nhóm Bán Hàng"
+    },
+    {
+      "id": "10",
+      "account": "support",
+      "password": "helpme",
+      "name": "Hỗ Trợ Kỹ Thuật"
+    },
+    {
+      "id": "21b0",
+      "fullName": "le thanh phong",
+      "email": "letp@gmail.com",
+      "password": "12345678"
+    },
+    {
+      "id": "b269",
+      "fullName": "le thanh phong",
+      "email": "fsdfsd@gmail.com",
+      "password": "3423423423423"
+    },
+    {
+      "id": "cdaf",
+      "fullName": "le thanh phong",
+      "email": "fsdfsdfsdfsd123@gmail.com",
+      "password": "42342341241"
+    },
+    {
+      "id": "3c86",
+      "fullName": "gsdgfdgfd",
+      "email": "lethhhsd@gmail.com",
+      "password": "jsdfsdfsfsd"
+    },
+    {
+      "id": "0a4c",
+      "fullName": "le thanh phong",
+      "email": "fsdfs33d@gmail.com",
+      "password": "3423423423423"
+    }
+  ]
+}

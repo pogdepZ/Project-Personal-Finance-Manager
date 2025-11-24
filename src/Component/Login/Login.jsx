@@ -1,10 +1,11 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
-import { toLogin } from "./loginSlice";
-import { useDispatch } from "react-redux";
+import { loginThunk, toLogin } from "./loginSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { schema } from "./schemaYup";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function Login() {
   const {
@@ -12,14 +13,22 @@ export default function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
+  const [errorMessage, setErrorMessage] = useState('')
 
+  const users= useSelector(state=>state.login.isLogin)
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const onSubmit = (data) => {
-    console.log("Thanh Cong Dang Nhap Ne", data);
-    dispatch(toLogin());
-    navigate("/home");
+  const onSubmit = async(data) => {
+    setErrorMessage('')
+    const actionResult = await dispatch(loginThunk(data));
+    if(actionResult.payload){
+        navigate("/")
+    }
+    else{
+      setErrorMessage("Tài khoản hoặc mật khẩu không chính xác")
+    }
   };
+
   return (
     <>
       <div className="flex min-h-screen">
@@ -85,6 +94,7 @@ export default function Login() {
                           {errors.password.message}
                         </p>
                       )}
+                      {errorMessage && <p className="text-red-500">{errorMessage}</p>}
                     </div>
                   </div>
 
@@ -106,13 +116,13 @@ export default function Login() {
                     </div>
 
                     <div className="text-sm">
-                      <a
-                        href="#"
+                      <Link
+                        to="/register"
                         className="font-medium text-indigo-600 hover:text-indigo-500"
                       >
                         {" "}
-                        Quên mật khẩu?{" "}
-                      </a>
+                       Hoặc đăng ký tài khoản tại đây?{" "}
+                      </Link>
                     </div>
                   </div>
 

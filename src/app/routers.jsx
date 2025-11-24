@@ -7,6 +7,7 @@ import Categories from "../Component/Categories/Categories";
 import Budget from "../Component/Budget/Budget";
 import Setting from "../Component/Setting/Setting";
 import Login from "../Component/Login/Login";
+import Register from "../Component/Register/Register";
 
 const routers = [
     {
@@ -24,6 +25,10 @@ const routers = [
             {
                 path: "login",
                 element: <Login />
+            },
+             {
+                path: "register",
+                element: <Register />
             },
             {
                 element: <ProtectedRoute />,
