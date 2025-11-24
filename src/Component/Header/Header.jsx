@@ -35,7 +35,7 @@ export default function Header() {
                 </svg>
               </div>
               <span className="font-bold text-xl tracking-tight text-gray-900">
-                POGNOVA
+                POGNOVA12
               </span>
             </div>
 
