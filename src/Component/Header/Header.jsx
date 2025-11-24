@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toLogout } from "../Login/loginSlice";
 export default function Header() {
@@ -12,6 +12,10 @@ export default function Header() {
     }, 0)
 
   };
+  const handleActive = (isActive) =>{
+    return isActive ? "text-indigo-600 bg-indigo-50 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center"
+                    : "text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 group flex items-center"
+  }
   return (
     <>
       <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
@@ -40,40 +44,40 @@ export default function Header() {
             </div>
 
             <div className="hidden md:flex space-x-1 items-center">
-              <Link
+              <NavLink
                 to="/"
-                className="text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 group flex items-center"
+                className={({isActive})=>handleActive(isActive)}
               >
                 Home
-              </Link>
+              </NavLink>
 
-              <Link
+              <NavLink
                 to="/dashboard"
-                className="text-indigo-600 bg-indigo-50 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center"
+                className={({isActive})=>handleActive(isActive)}
               >
                 Dashboard
-              </Link>
+              </NavLink>
 
-              <Link
+              <NavLink
                 to="/transactions"
-                className="text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center"
+               className={({isActive})=>handleActive(isActive)}
               >
                 Transaction
-              </Link>
+              </NavLink>
 
-              <Link
+              <NavLink
                 to="/categories"
-                className="text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center"
+                 className={({isActive})=>handleActive(isActive)}
               >
                 Categories
-              </Link>
+              </NavLink>
 
-              <Link
+              <NavLink
                 to="/budget"
-                className="text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 flex items-center"
+                 className={({isActive})=>handleActive(isActive)}
               >
                 Budget
-              </Link>
+              </NavLink>
             </div>
 
             <div className="hidden md:flex items-center space-x-4">
