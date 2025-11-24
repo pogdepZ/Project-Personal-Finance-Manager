@@ -5,22 +5,23 @@ import Filter from "./Filter/Filter";
 import { allFilterSelector } from "./Filter/filterSelector";
 import { useEffect } from "react";
 import Modal from "../Modal/Modal";
-
+import { useDispatch } from "react-redux";
+import { deleteThunk } from "./transactionSlice";
 export default function Transactions() {
   const [cur, setCur] = useState(1);
   const [isShowModal, setShowModal] = useState(false);
-
-  const modalRef = useRef(null);
-
+  const dispatch = useDispatch();
   const list = useSelector(allFilterSelector);
   const page = 5;
   const curList = list.slice((cur - 1) * page, cur * page);
   const maxTrang = Math.ceil(list.length / page);
   const pages = Array.from({ length: Math.min(3, maxTrang - cur + 1) });
+  
   useEffect(() => {
     setCur(1);
   }, [list]);
 
+  console.log("render")
   return (
     <>
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -113,17 +114,27 @@ export default function Transactions() {
                     </div>
                   </div>
 
-                  <div className="flex flex-col items-end ml-4">
-                    <p
-                      className={
-                        item.type == "expense"
-                          ? "text-base font-bold text-red-600"
-                          : "inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800"
-                      }
+                  <div className="flex items-center gap-5">
+                    <div className="flex flex-col items-end ml-4">
+                      <p
+                        className={
+                          item.type == "expense"
+                            ? "text-base font-bold text-red-600"
+                            : "inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800"
+                        }
+                      >
+                        {formatMoney(item.amount)}VNĐ
+                      </p>
+                      <p className="text-sm text-gray-500 mt-1">{item.date}</p>
+                    </div>
+                    <button
+                      onClick={() => {
+                        dispatch(deleteThunk(item.id));
+                      }}
+                      className="cursor-pointer"
                     >
-                      {formatMoney(item.amount)}VNĐ
-                    </p>
-                    <p className="text-sm text-gray-500 mt-1">{item.date}</p>
+                      <i className="fa-solid fa-delete-left text-red-500 text-3xl"></i>
+                    </button>
                   </div>
                 </div>
               </li>
@@ -207,7 +218,7 @@ export default function Transactions() {
         </div>
       </main>
 
-     <Modal isShowModal={isShowModal} setShowModal={setShowModal}/>
+      <Modal isShowModal={isShowModal} setShowModal={setShowModal} />
     </>
   );
 }

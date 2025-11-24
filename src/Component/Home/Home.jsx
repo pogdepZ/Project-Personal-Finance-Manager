@@ -2,6 +2,8 @@ import { useSelector } from "react-redux";
 
 export default function Home() {
   const isLogin = useSelector((state) => state.login.isLogin);
+  const categories = useSelector((state) => state.categories.list);
+  console.log("categories", categories);
   return (
     <>
       <section className="bg-white overflow-hidden pt-16 pb-20 lg:pt-24 lg:pb-28">

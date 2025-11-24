@@ -137,7 +137,7 @@ export default function Footer() {
 
           <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm text-center md:text-left mb-4 md:mb-0">
-              &copy; 2025 FinDash Inc. All rights reserved.
+              &copy; 2025 POGNOVA Inc. All rights reserved.
             </p>
 
             <div className="flex space-x-6">

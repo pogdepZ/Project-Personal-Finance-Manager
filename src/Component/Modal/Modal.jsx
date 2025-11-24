@@ -2,9 +2,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import {schema} from "./schemaTransaction"
+import { useDispatch } from "react-redux";
+import { createThunk } from "../Transactions/transactionSlice";
+
 export default function Modal({ isShowModal, setShowModal }) {
   const modalRef = useRef(null);
 
+  const dispatch = useDispatch()
   const {register, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema)})
   const [type, setType] = useState("income");
   useEffect(() => {
@@ -24,8 +28,9 @@ export default function Modal({ isShowModal, setShowModal }) {
     };
   }, [isShowModal]);
 
-  const onSubmit = (data)=>{
-    console.log({...data, type: type}) 
+  const onSubmit = async (data)=>{
+    const isCreate = await dispatch(createThunk({...data, type: type}))
+    setShowModal(false)
   }
   return (
     <>
@@ -177,15 +182,15 @@ export default function Modal({ isShowModal, setShowModal }) {
                         htmlFor="note"
                         className="block text-sm font-medium text-gray-700 mb-1"
                       >
-                        Ghi chú (Tùy chọn)
+                        Ghi chú
                       </label>
-                      <textarea
+                      <input
                         id="note"
-                        name="note"
-                        rows="3"
+                        {...register("note")}
                         className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-lg p-3"
                         placeholder="Nhập chi tiết giao dịch..."
-                      ></textarea>
+                      />
+                       {errors.note && <p className="text-red-500">{errors.note.message}</p>}
                     </div>
 
                     <div className="pt-4 flex items-center space-x-4">
