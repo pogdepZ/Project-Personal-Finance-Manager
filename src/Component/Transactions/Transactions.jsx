@@ -6,12 +6,14 @@ import { allFilterSelector } from "./Filter/filterSelector";
 import { useEffect } from "react";
 import Modal from "../Modal/Modal";
 import { useDispatch } from "react-redux";
-import { deleteThunk } from "./transactionSlice";
+
 export default function Transactions() {
   const [cur, setCur] = useState(1);
   const [isShowModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const list = useSelector(allFilterSelector);
+
+
   const page = 5;
   const curList = list.slice((cur - 1) * page, cur * page);
   const maxTrang = Math.ceil(list.length / page);
@@ -21,7 +23,6 @@ export default function Transactions() {
     setCur(1);
   }, [list]);
 
-  console.log("render")
   return (
     <>
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

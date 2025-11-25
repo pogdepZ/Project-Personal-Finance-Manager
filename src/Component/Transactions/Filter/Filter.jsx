@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 export default function Filter() {
 const data = useSelector(state=>state.filter)
 const {search, status, date, category} = data
+const categories = useSelector(state=>state.categories.list)
 const dispatch = useDispatch()    
   return (
     <>
@@ -45,13 +46,11 @@ const dispatch = useDispatch()
               className="block w-full pl-3 pr-10 py-2.5 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-lg border text-gray-700"
             >
               <option value='ALL' >Tất cả danh mục</option>
-              <option>Ăn uống</option>
-              <option>Di chuyển</option>
-              <option>Mua sắm</option>
-              <option>Lương</option>
+                {categories.map((item)=>(
+                    <option key={item.id} value={item.name}>{item.name}</option>
+                ))}
             </select>
           </div>
-
           <div className="md:col-span-2">
             <select
               id="type"

@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const isLogin = useSelector((state) => state.login.isLogin);
-  const categories = useSelector((state) => state.categories.list);
-  console.log("categories", categories);
+
   return (
     <>
       <section className="bg-white overflow-hidden pt-16 pb-20 lg:pt-24 lg:pb-28">
@@ -19,22 +19,17 @@ export default function Home() {
                 <span className="text-indigo-600">Thông minh hơn.</span>
               </h1>
               <p className="text-lg text-gray-500 mb-8 max-w-lg leading-relaxed">
-                FinDash giúp bạn theo dõi thu chi, lập ngân sách và đạt được mục
+                POGNOVA giúp bạn theo dõi thu chi, lập ngân sách và đạt được mục
                 tiêu tài chính một cách dễ dàng với giao diện trực quan.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <a
-                  href="#"
+                <Link
+                  to ="/login"
                   className="inline-flex justify-center items-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 md:text-lg transition-all shadow-lg hover:shadow-indigo-500/30"
                 >
                   Dùng thử miễn phí
-                </a>
-                <a
-                  href="#"
-                  className="inline-flex justify-center items-center px-8 py-3 border border-gray-300 text-base font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 md:text-lg transition-all"
-                >
-                  Xem Demo
-                </a>
+                </Link>
+                
               </div>
 
               <div className="mt-8 pt-8 border-t border-gray-100 flex items-center gap-4">
@@ -105,7 +100,7 @@ export default function Home() {
               Được tin cậy bởi các nhà đầu tư cá nhân
             </h2>
             <p className="mt-3 text-xl text-indigo-200 sm:mt-4">
-              Số liệu thực tế chứng minh hiệu quả của FinDash.
+              Số liệu thực tế chứng minh hiệu quả của POGNOVA.
             </p>
           </div>
           <dl className="mt-10 text-center sm:max-w-3xl sm:mx-auto sm:grid sm:grid-cols-3 sm:gap-8">
@@ -242,12 +237,12 @@ export default function Home() {
             </h2>
             <div className="mt-8 flex lg:mt-0 lg:shrink-0">
               <div className="inline-flex rounded-md shadow">
-                <a
-                  href="#"
+                <Link
+                  to="/register"
                   className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
                 >
                   Đăng ký ngay
-                </a>
+                </Link>
               </div>
               <div className="ml-3 inline-flex rounded-md shadow">
                 <a

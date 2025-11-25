@@ -1,6 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 
 const list = state => state.transactions.list;
+
 const search = state => state.filter.search;
 const status = state => state.filter.status;
 const category = state => state.filter.category;

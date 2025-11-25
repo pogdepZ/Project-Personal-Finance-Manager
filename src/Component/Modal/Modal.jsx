@@ -2,35 +2,40 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import {schema} from "./schemaTransaction"
-import { useDispatch } from "react-redux";
-import { createThunk } from "../Transactions/transactionSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {addTransaction, deleteTransaction, updateManyStatus} from "../Transactions/transactionSlice"
 
+import { getIcon } from "../../list-icon/getIcon";
 export default function Modal({ isShowModal, setShowModal }) {
   const modalRef = useRef(null);
 
+  const listCategories = useSelector(state=>state.categories)
+
   const dispatch = useDispatch()
-  const {register, handleSubmit, formState: {errors}} = useForm({resolver: yupResolver(schema)})
+  const {register, handleSubmit, formState: {errors}, reset} = useForm({resolver: yupResolver(schema)})
   const [type, setType] = useState("income");
   useEffect(() => {
     if (!isShowModal) return;
 
-    const handleKeyDown = (e) => {
+    const handleMouseDown = (e) => {
       if (modalRef.current && !modalRef.current.contains(e.target)) {
         setShowModal(false);
       }
     };
 
     document.body.style.overflow = "hidden";
-    window.addEventListener("mousedown", handleKeyDown);
+    window.addEventListener("mousedown", handleMouseDown);
     return () => {
-      window.removeEventListener("mousedown", handleKeyDown);
+      window.removeEventListener("mousedown", handleMouseDown);
       document.body.style.overflow = "unset";
     };
   }, [isShowModal]);
 
   const onSubmit = async (data)=>{
-    const isCreate = await dispatch(createThunk({...data, type: type}))
+    data.status = 'used'
+    dispatch(addTransaction({...data, type: type}))
     setShowModal(false)
+    reset()
   }
   return (
     <>
@@ -152,11 +157,11 @@ export default function Modal({ isShowModal, setShowModal }) {
                         <option value="" disabled defaultValue="">
                           Chọn danh mục...
                         </option>
-                        <option value="salary">💰 Lương</option>
-                        <option value="food">🍜 Ăn uống</option>
-                        <option value="shopping">🛍️ Mua sắm</option>
-                        <option value="transport">🛵 Di chuyển</option>
-                        <option value="home">🏠 Nhà cửa</option>
+                        {listCategories && listCategories.list.map(item=>(
+                            <option key={item.id}>
+                              {item.name}
+                            </option>
+                        ))}
                       </select>
                       {errors.category && <p className="text-red-500">{errors.category.message}</p>}
                     </div>

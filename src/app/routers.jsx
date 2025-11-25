@@ -8,7 +8,7 @@ import Budget from "../Component/Budget/Budget";
 import Setting from "../Component/Setting/Setting";
 import Login from "../Component/Login/Login";
 import Register from "../Component/Register/Register";
-import AddCategory from "../Component/Categories/AddCate";
+
 
 const routers = [
     {
@@ -54,10 +54,7 @@ const routers = [
                         path: "setting",
                         element: <Setting />
                     },
-                     {
-                        path: "addcategories",
-                        element: <AddCategory />
-                    },
+                     
 
                 ]
             }

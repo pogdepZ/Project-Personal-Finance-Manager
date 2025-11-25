@@ -313,67 +313,98 @@
     {
       "id": "c1",
       "name": "Ăn uống",
-      "type": "expense"
+      "type": "expense",
+      "status": "used",
+      "icon": "utensils"
     },
     {
       "id": "c2",
       "name": "Di chuyển",
-      "type": "expense"
+      "type": "expense",
+      "status": "used",
+      "icon": "bus"
     },
     {
       "id": "c3",
       "name": "Mua sắm",
-      "type": "expense"
+      "type": "expense",
+      "status": "used",
+      "icon": "shopping-cart"
     },
     {
       "id": "c4",
       "name": "Hóa đơn",
-      "type": "expense"
+      "type": "expense",
+      "status": "used",
+      "icon": "receipt"
     },
     {
       "id": "c5",
       "name": "Giải trí",
-      "type": "expense"
+      "type": "expense",
+      "status": "used",
+      "icon": "gamepad-2"
     },
     {
       "id": "c6",
       "name": "Hiếu hỉ",
-      "type": "expense"
+      "type": "expense",
+      "status": "used",
+      "icon": "gift"
     },
     {
       "id": "c7",
       "name": "Giáo dục",
-      "type": "expense"
+      "type": "expense",
+      "status": "used",
+      "icon": "graduation-cap"
     },
     {
       "id": "c8",
       "name": "Sức khỏe",
-      "type": "expense"
+      "type": "expense",
+      "status": "used",
+      "icon": "activity"
     },
     {
       "id": "c9",
       "name": "Cá nhân",
-      "type": "expense"
+      "type": "expense",
+      "status": "used",
+      "icon": "user"
     },
     {
       "id": "c10",
       "name": "Lương",
-      "type": "income"
+      "type": "income",
+      "status": "notUse",
+      "icon": "wallet"
     },
     {
       "id": "c11",
       "name": "Thưởng",
-      "type": "income"
+      "type": "income",
+      "status": "used",
+      "icon": "award"
     },
     {
       "id": "c12",
       "name": "Đầu tư",
-      "type": "income"
+      "type": "income",
+      "status": "used",
+      "icon": "trending-up"
     },
     {
-      "id": "c13",
-      "name": "Khác",
-      "type": "income"
+      "id": "8e32",
+      "name": "Karaoke",
+      "type": "expense",
+      "status": "notUse"
+    },
+    {
+      "id": "912a",
+      "name": "Karaoke2",
+      "type": "expense",
+      "status": "notUse"
     }
   ]
 }
